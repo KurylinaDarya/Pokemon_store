@@ -1,0 +1,32 @@
+.wrapper {
+  background: #1b3764;
+  padding: 10px 20px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.menuItem {
+  color: #f6f8fc;
+  border: 2px solid #f6f8fc;
+  border-radius: 15px;
+  margin-right: 10px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+.menuItem:active {
+  color: #ffca42;
+  border: 2px solid #ffca42;
+}
+.menuItem:hover {
+  color: #ffca42;
+  border: 2px solid #ffca42;
+}
+.logoBasket {
+  width: 40px;
+  height: 40px;
+}
