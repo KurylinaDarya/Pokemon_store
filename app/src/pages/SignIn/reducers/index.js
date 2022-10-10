@@ -8,10 +8,11 @@ const initialState = {
   isLoading: false,
   error: null,
   userInfo: {},
-  accessToken: {},
+  accessToken: null,
+  isAuth: false,
 };
 
-export const signIn = createAsyncThunk("auth/signIn", async (data) => {
+export const auth = createAsyncThunk("auth/signIn", async (data) => {
   const responce = await signInRequest(data);
 
   return responce.data;
@@ -20,26 +21,27 @@ export const signIn = createAsyncThunk("auth/signIn", async (data) => {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  extraReducers: {
-    [signIn.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(auth.pending, (state) => {
       state.isLoading = true;
-    },
-    [signIn.fulfilled]: (state, { payload }) => {
+    });
+
+    builder.addCase(auth.fulfilled, (state, { payload }) => {
       const { accessToken, ...userInfo } = payload;
 
       state.isLoading = false;
       state.userInfo = userInfo;
       state.accessToken = accessToken;
+      state.isAuth = true;
 
       localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
-    },
-    [signIn.rejected]: (state, { error }) => {
+    });
+
+    builder.addCase(auth.rejected, (state, { error }) => {
       state.isLoading = false;
       state.error = error.message;
-    },
+    });
   },
 });
-
-export const { exitAccount } = authSlice.actions;
 
 export default authSlice.reducer;

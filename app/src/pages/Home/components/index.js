@@ -1,5 +1,3 @@
-import React from "react";
-
 // import PokemonHome from "../../../static/img/PokemonHome.png";
 
 import styles from "./styles.module.scss";

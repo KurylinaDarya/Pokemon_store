@@ -1,5 +1,3 @@
-import React from "react";
-
 import Cart from "../components/index";
 
 const CartContainer = () => {

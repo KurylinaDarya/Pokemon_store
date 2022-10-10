@@ -1,48 +1,55 @@
 @import url("https://fonts.googleapis.com/css2?family=Cardo&family=Raleway:ital,wght@1,100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cardo&family=Inter&family=Raleway:ital,wght@1,100&display=swap");
 
-.wrapper {
-  height: 450px;
-  padding: 20px;
-  background-color: #f4f8ff;
-  text-align: center;
-}
 .title {
   font-family: "Cardo";
-  font-size: 42px;
-  color: rgba(27, 55, 100, 1);
-  margin: 50px 0;
+  font-size: 36px;
+  color: #f4f8ff;
 }
-.container {
-  width: 40%;
+.dialogTitle {
+  font-family: "Cardo";
+  font-size: 24px;
+  color: rgba(27, 55, 100, 1);
+  text-align: center;
+}
+.dialogContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  margin: 0 auto;
   border: 2px solid rgba(27, 55, 100, 1);
   border-radius: 10px;
 }
 .input {
-  border: 1px solid rgba(255, 202, 66, 1);
-  border-radius: 5px;
   height: 30px;
+  padding: 0 5px;
 }
-
 .button {
-  background-color: rgba(27, 55, 100, 1);
-  color: #ffffff;
+  color: rgba(27, 55, 100, 1);
   font-family: "Inter";
   font-size: 18px;
-  padding: 10px 15px;
+  padding: 5px;
   border-radius: 10px;
-  margin: 20px 0 50px 0;
+  &:active {
+    color: #ffca42;
+    border: 1px solid rgba(255, 202, 66, 1);
+  }
+  &:hover {
+    color: #ffca42;
+    border: 1px solid rgba(255, 202, 66, 1);
+  }
 }
-.button:active {
-  color: #ffca42;
-  border: 1px solid rgba(255, 202, 66, 1);
-}
-.button:hover {
-  color: #ffca42;
-  border: 1px solid rgba(255, 202, 66, 1);
+.dialogContentText {
+  font-family: "Cardo";
+  font-size: 20px;
+
+  color: rgba(27, 55, 100, 1);
+  &:hover {
+    color: #ffca42;
+  }
 }

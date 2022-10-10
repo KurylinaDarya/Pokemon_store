@@ -1,4 +1,7 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
+
+import SignInContainer from "../../pages/SignIn/containers/SignInContainer";
 
 import { ROUTE_NAMES } from "../../router/routeNames";
 
@@ -17,12 +20,7 @@ const Header = () => {
       </div>
 
       <div className={styles.menu}>
-        <Link className={styles.menuItem} to={ROUTE_NAMES.SIGN_UP}>
-          Registration
-        </Link>
-        <Link className={styles.menuItem} to={ROUTE_NAMES.SIGN_IN}>
-          Authorization
-        </Link>
+        <SignInContainer className={styles.menuItem} />
       </div>
 
       <div className={styles.logoBasket}>
@@ -32,4 +30,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

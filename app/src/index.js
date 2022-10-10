@@ -1,7 +1,10 @@
-import React from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
 import Router from "./router/Routes";
 import MainLayout from "../src/components/Layouts/index";
@@ -12,17 +15,18 @@ import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <MainLayout>
-        <Router />
-      </MainLayout>
-    </Provider>
-  </BrowserRouter>
-);
+const persistor = persistStore(store);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+root.render(
+  <StrictMode>
+    <HashRouter>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <MainLayout>
+            <Router />
+          </MainLayout>
+        </PersistGate>
+      </Provider>
+    </HashRouter>
+  </StrictMode>
+);

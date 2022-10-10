@@ -1,34 +1,35 @@
 import { useCallback, useEffect, useState } from "react";
-// import { delay } from "../utils/slowFetch";
 
 export const useFetching = (
   asyncCallback,
   initialValue,
-  isLoadOnMound = true
+  isLoadOnMount = true
 ) => {
-  const [data, setData] = useState(initialValue); /*([])*/
-  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState(initialValue);
+  const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleDataLoad = useCallback(async (data) => {
-    setIsLoading(true);
-    try {
-      //   await delay(5000);
-      const response = await asyncCallback(data);
+  const handleDataLoad = useCallback(
+    async (data) => {
+      setLoading(true);
+      try {
+        const response = await asyncCallback(data);
 
-      setData(response);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+        setData(response);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [asyncCallback]
+  );
 
   useEffect(() => {
-    if (isLoadOnMound) {
+    if (isLoadOnMount) {
       handleDataLoad();
     }
-  }, [isLoadOnMound]);
+  }, [isLoadOnMount, handleDataLoad]);
 
   return { data, isLoading, error, handleDataLoad };
 };

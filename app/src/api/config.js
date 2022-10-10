@@ -1,9 +1,21 @@
 import axios from "axios";
 
-export const BASE_URL = "http://localhost:3000";
+import { LOCAL_STORAGE_KEYS, BASE_URL } from "../constans/index";
 
-const apiConfig = {
+export const apiConfig = {
   baseURL: BASE_URL,
 };
 
-export const api = axios.create(apiConfig);
+const api = axios.create(apiConfig);
+
+api.interceptors.request.use((axiosConfig) => {
+  const accessToken = localStorage.getItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN);
+
+  if (accessToken) {
+    axiosConfig.headers.Authorization = `Bearer ${accessToken}`;
+  }
+
+  return axiosConfig;
+});
+
+export { api };

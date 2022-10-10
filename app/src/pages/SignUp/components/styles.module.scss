@@ -3,43 +3,44 @@
 
 .wrapper {
   height: 450px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: rgba(255, 202, 66, 1);
-  text-align: center;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  background: url("../../../static/img/pokemonSignUp.png") left bottom/350px
+    no-repeat;
+  background-color: rgba(245, 248, 252, 1);
 }
 .title {
   font-family: "Cardo";
-  font-size: 42px;
+  font-size: 36px;
   color: rgba(27, 55, 100, 1);
-  text-align: center;
-  margin-bottom: 40px;
 }
 .form {
+  width: 50%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-direction: column;
+  border-bottom: 2px solid #ffca42;
+  border-right: 2px solid #ffca42;
+  .input {
+    width: 80%;
+    font-family: "Inter";
+    color: rgba(27, 55, 100, 1);
+  }
+}
 
-  border-bottom: 2px solid #f5f8fc;
-  border-right: 2px solid #f5f8fc;
-}
-.input {
-  width: 40%;
-  height: 25px;
-  padding: 0 5px;
-}
 .button {
-  background-color: rgba(27, 55, 100, 1);
+  width: 50%;
   color: #ffffff;
   font-family: "Inter";
   font-size: 18px;
   padding: 10px 15px;
+  margin-top: 30px;
   border-radius: 10px;
-  margin: 20px 0 50px 0;
-}
-.button:active {
-  color: #ffca42;
-}
-.button:hover {
-  color: #ffca42;
+  background-color: rgba(27, 55, 100, 1);
+  &:active {
+    color: #ffca42;
+  }
+  &:hover {
+    color: #ffca42;
+  }
 }

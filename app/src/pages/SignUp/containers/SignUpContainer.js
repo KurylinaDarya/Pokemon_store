@@ -1,60 +1,77 @@
-import React from "react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
 
-import startCase from "lodash/startCase";
-
-import { signUp } from "../api";
-import { useForm } from "../../../hooks/useForm";
 import { useFetching } from "../../../hooks/useFetching";
+
+import { signUp } from "../api/index";
+import { SignUpSchema } from "../validations/index";
 import { ROUTE_NAMES } from "../../../router/routeNames";
+
 import SignUp from "../components/index";
 
 const SignUpContainer = () => {
-  const [formValues, handleFormChange, handleFormReset] = useForm({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    gender: "",
-    phone: "",
-  });
-
-  const navigate = useNavigate();
   const { data, handleDataLoad, isLoading, error } = useFetching(
     signUp,
     null,
     false
   );
 
-  const handleSubmit = useCallback(
-    (event) => {
-      event.preventDefault();
-      handleDataLoad(formValues);
-      handleFormReset();
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      gender: "",
+      phone: "",
     },
-    [formValues]
-  );
+    onSubmit: (values, { resetForm }) => {
+      handleDataLoad(values);
+
+      resetForm();
+    },
+    validationSchema: SignUpSchema,
+  });
+
+  const [valuePassword, setValuePassword] = useState({
+    password: "",
+    showPassword: false,
+  });
+
+  const handleClickShowPassword = useCallback(() => {
+    setValuePassword({
+      ...valuePassword,
+      showPassword: !valuePassword.showPassword,
+    });
+  }, [valuePassword]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data?.data.success) {
       const timeout = setTimeout(() => {
+        localStorage.setItem("data", data.config.data);
+
         navigate(ROUTE_NAMES.SIGN_IN);
-      }, 3000);
+      }, 2000);
+
       return () => clearTimeout(timeout);
     }
-  }, [error, data, navigate]);
+    if (error?.message) {
+      error.response.data.message = null;
+    }
+  }, [data, navigate, error]);
 
   return (
     <div>
       <SignUp
+        formik={formik}
         data={data}
         error={error}
-        startCase={startCase}
-        formValues={formValues}
-        handleSubmit={handleSubmit}
-        handleFormChange={handleFormChange}
-        handleFormReset={handleFormReset}
+        isLoading={isLoading}
+        valuePassword={valuePassword}
+        onClickShowPassword={handleClickShowPassword}
       />
     </div>
   );

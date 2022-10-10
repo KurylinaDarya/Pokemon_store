@@ -1,5 +1,3 @@
-import React from "react";
-
 import fb from "../../static/img/fb.png";
 import tw from "../../static/img/tw.png";
 import link from "../../static/img/link.png";

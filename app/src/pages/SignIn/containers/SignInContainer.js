@@ -1,50 +1,76 @@
-import React from "react";
-import { useCallback, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
 
 import { ROUTE_NAMES } from "../../../router/routeNames";
-import { signIn } from "../reducers/index";
-import { useForm } from "../../../hooks/useForm";
+import { LoginSchema } from "../validations/index";
+import { isAuthSelector } from "../../../selectors/index";
+import { auth } from "../reducers/index";
+
 import SignIn from "../components/index";
 
 const SignInContainer = () => {
   const dispatch = useDispatch();
 
-  const [signInForm, handleFormChange, handleFormReset] = useForm({
-    email: "",
-    password: "",
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: (values, { resetForm }) => {
+      dispatch(auth(values));
+
+      resetForm();
+    },
+    validationSchema: LoginSchema,
   });
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const [valuePassword, setValuePassword] = useState({
+    password: "",
+    showPassword: false,
+  });
+
+  const handleClickShowPassword = () => {
+    setValuePassword({
+      ...valuePassword,
+      showPassword: !valuePassword.showPassword,
+    });
+  };
 
   const navigate = useNavigate();
 
-  const handleSubmit = useCallback(
-    (event) => {
-      event.preventDefault();
-      dispatch(signIn(signInForm));
-      handleFormReset();
-    },
-    [dispatch, signInForm, handleFormReset]
-  );
+  const isAuth = useSelector(isAuthSelector);
 
-  //   useEffect(() => {
-  //     if (...) {
-  //       const timeout = setTimeout(() => {
-  //         navigate(ROUTE_NAMES.CART);
-  //       }, 3000);
+  useEffect(() => {
+    if (isAuth) {
+      const timeout = setTimeout(() => {
+        navigate(ROUTE_NAMES.SHOP);
+      }, 2000);
 
-  //       return () => clearTimeout(timeout);
-  //     }
-  //   }, [navigate]);
+      return () => clearTimeout(timeout);
+    }
+  }, [isAuth, navigate]);
 
   return (
-    <div>
-      <SignIn
-        signInForm={signInForm}
-        handleSubmit={handleSubmit}
-        handleFormChange={handleFormChange}
-      />
-    </div>
+    <SignIn
+      formik={formik}
+      open={open}
+      onClickOpen={handleClickOpen}
+      onClose={handleClose}
+      valuePassword={valuePassword}
+      handleClickShowPassword={handleClickShowPassword}
+    />
   );
 };
 

@@ -1,0 +1,25 @@
+.wrapper {
+  width: 100%;
+}
+.title {
+  font-family: "Cardo";
+  font-size: 30px;
+  line-height: 38px;
+  color: rgba(27, 55, 100, 1);
+  text-align: center;
+}
+.stack {
+  margin: 20px auto;
+}
+.pokemosContent {
+  display: flex;
+  justify-content: space-around;
+}
+.pagination {
+  margin: 20px auto;
+}
+.pokemosContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
