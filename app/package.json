@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.7",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -14,6 +15,7 @@
     "axios": "^0.27.2",
     "formik": "^2.2.9",
     "gh": "^2.8.9",
+    "material-ui-popup-state": "^4.1.0",
     "node-sass": "^7.0.3",
     "pages": "^0.0.16",
     "react": "^18.2.0",

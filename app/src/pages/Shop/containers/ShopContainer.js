@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { pokemonsSelector } from "../../../selectors/index";
 import { loadPokemons } from "../reducers";
-import { ROUTE_NAMES } from "../../../router/routeNames";
+import { ROUTE_NAMES } from "../../../routes/routeNames";
 import { usePagination } from "../../../hooks/usePagination";
 
 import Layout from "../components/Layout/index";

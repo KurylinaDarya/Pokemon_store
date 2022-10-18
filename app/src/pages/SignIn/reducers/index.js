@@ -1,45 +1,51 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { signIn as signInRequest } from "../api/index";
-
+import { signIn } from "../api/index";
 import { LOCAL_STORAGE_KEYS } from "../../../constans/index";
 
 const initialState = {
   isLoading: false,
   error: null,
-  userInfo: {},
-  accessToken: null,
+  data: {},
   isAuth: false,
 };
 
-export const auth = createAsyncThunk("auth/signIn", async (data) => {
-  const responce = await signInRequest(data);
+export const auth = createAsyncThunk(
+  "auth/login",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await signIn(data);
 
-  return responce.data;
-});
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(auth.pending, (state) => {
       state.isLoading = true;
+      state.error = null;
     });
 
     builder.addCase(auth.fulfilled, (state, { payload }) => {
-      const { accessToken, ...userInfo } = payload;
+      const { accessToken, ...data } = payload;
 
       state.isLoading = false;
-      state.userInfo = userInfo;
-      state.accessToken = accessToken;
+      state.data = data;
       state.isAuth = true;
 
       localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
     });
 
-    builder.addCase(auth.rejected, (state, { error }) => {
+    builder.addCase(auth.rejected, (state, { payload: error }) => {
       state.isLoading = false;
-      state.error = error.message;
+      state.error = error;
     });
   },
 });

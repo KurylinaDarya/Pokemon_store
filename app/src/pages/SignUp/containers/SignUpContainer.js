@@ -6,7 +6,7 @@ import { useFetching } from "../../../hooks/useFetching";
 
 import { signUp } from "../api/index";
 import { SignUpSchema } from "../validations/index";
-import { ROUTE_NAMES } from "../../../router/routeNames";
+import { ROUTE_NAMES } from "../../../routes/routeNames";
 
 import SignUp from "../components/index";
 

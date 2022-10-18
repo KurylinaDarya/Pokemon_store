@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 
-import Router from "./router/Routes";
+import Router from "./routes/Router";
 import MainLayout from "../src/components/Layouts/index";
 
 import { store } from "./store/configureStore";

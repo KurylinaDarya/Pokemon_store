@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import startCase from "lodash/startCase";
+
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import Input from "@mui/material/Input";
@@ -9,12 +11,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
-// import Visibility from "@mui/icons-material/Visibility";
-// import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
-import { promptPassword, promptPhoneNumber } from "../constans/index";
+import { hintTexts } from "../constans/index";
 
 import styles from "./styles.module.scss";
 
@@ -22,6 +24,8 @@ const SignUp = ({
   formik,
   data,
   error,
+  errors,
+  touched,
   valuePassword,
   onClickShowPassword,
 }) => {
@@ -37,58 +41,72 @@ const SignUp = ({
             id="firstName"
             name="firstName"
             type="firstName"
-            autoComplete="on"
-            color={formik.errors.firstName ? "error" : "success"}
-            label={
-              formik.errors.firstName ? formik.errors.firstName : "First name"
-            }
             variant="standard"
-            onChange={formik.handleChange}
+            errors={formik.errors.firstName}
             value={formik.values.firstName}
+            color={errors ? "error" : "success"}
+            label={
+              errors && touched
+                ? `${startCase("firstName")}: ${errors}`
+                : startCase("firstName")
+            }
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            touched={formik.touched.firstName}
             className={styles.input}
           />
           <TextField
             id="lastName"
             name="lastName"
             type="lastName"
-            autoComplete="on"
-            color={formik.errors.lastName ? "error" : "success"}
-            label={
-              formik.errors.lastName ? formik.errors.lastName : "Last name"
-            }
             variant="standard"
-            onChange={formik.handleChange}
+            errors={formik.errors.lastName}
             value={formik.values.lastName}
+            color={errors ? "error" : "success"}
+            label={
+              errors && touched
+                ? `${startCase("lastName")}: ${errors}`
+                : startCase("lastName")
+            }
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            touched={formik.touched.lastName}
             className={styles.input}
           />
-          <Tooltip title={promptPhoneNumber} placement="bottom-start">
+          <Tooltip title={hintTexts.phone} placement="bottom-start">
             <TextField
               id="phone"
               name="phone"
               type="phone"
-              autoComplete="on"
-              color={formik.errors.phone ? "error" : "success"}
-              label={formik.errors.phone ? formik.errors.phone : "Phone"}
               variant="standard"
-              onChange={formik.handleChange}
+              errors={formik.errors.phone}
               value={formik.values.phone}
+              color={errors ? "error" : "success"}
+              label={
+                errors && touched
+                  ? `${startCase("phone")}: ${errors}`
+                  : startCase("phone")
+              }
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              touched={formik.touched.phone}
               className={styles.input}
             />
           </Tooltip>
           <FormControl variant="standard">
-            <InputLabel
-              id="gender-label"
-              color={formik.errors.gender ? "error" : "success"}
-            >
-              {formik.errors.gender ? formik.errors.gender : "Gender"}
+            <InputLabel id="gender-label" color={errors ? "error" : "success"}>
+              {errors ? errors : "Gender"}
             </InputLabel>
             <Select
               labelId="gender-label"
               id="gender"
               name="gender"
+              errors={formik.errors.gender}
               value={formik.values.gender}
               onChange={formik.handleChange}
-              color={formik.errors.gender ? "error" : "success"}
+              color={errors && touched ? "error" : "success"}
+              onBlur={formik.handleBlur}
+              touched={formik.touched.gender}
               className={styles.input}
             >
               <MenuItem value={"male"}>Male</MenuItem>
@@ -99,44 +117,45 @@ const SignUp = ({
             id="email"
             name="email"
             type="email"
-            autoComplete="on"
-            color={formik.errors.email ? "error" : "success"}
-            label={
-              formik.errors.email ? `Email: ${formik.errors.email}` : "Email"
-            }
             variant="standard"
-            onChange={formik.handleChange}
             value={formik.values.email}
+            errors={formik.errors.email}
+            color={errors ? "error" : "success"}
+            label={
+              errors && touched
+                ? `${startCase("email")}: ${errors}`
+                : startCase("email")
+            }
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            touched={formik.touched.email}
             className={styles.input}
           />
-          <Tooltip title={promptPassword} placement="bottom-start">
+          <Tooltip title={hintTexts.password} placement="bottom-start">
             <FormControl variant="standard">
-              <InputLabel
-                color={formik.errors.password ? "error" : "success"}
-                htmlFor="standard-adornment-password"
-              >
-                {formik.errors.password
-                  ? `Password: ${formik.errors.password}`
-                  : "Password"}
+              <InputLabel color={errors ? "error" : "success"}>
+                {errors && touched ? `Password: ${errors}` : "Password"}
               </InputLabel>
               <Input
                 id="password"
                 name="password"
-                label="lol"
-                autoComplete="on"
-                type={valuePassword.showPassword ? "text" : "password"}
-                color={formik.errors.password ? "error" : "success"}
+                autoComplete="off"
                 value={formik.values.password}
+                errors={formik.errors.password}
+                type={valuePassword.showPassword ? "text" : "password"}
+                color={errors ? "error" : "success"}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                touched={formik.touched.password}
                 className={styles.input}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton onClick={onClickShowPassword}>
-                      {/* {valuePassword.showPassword ? (
+                      {valuePassword.showPassword ? (
                         <VisibilityOff />
                       ) : (
                         <Visibility />
-                      )} */}
+                      )}
                     </IconButton>
                   </InputAdornment>
                 }

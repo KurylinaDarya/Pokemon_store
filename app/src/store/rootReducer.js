@@ -4,7 +4,7 @@ import { persistReducer } from "redux-persist";
 
 import authSlice from "../pages/SignIn/reducers/index";
 import pokemonsSlice from "../pages/Shop/reducers/index";
-// import pokemonDetailsSlice from "../pages/PokemonDetails/reducers";
+import productDetailsSlice from "../pages/PokemonDetails/reducers/index";
 
 const authPersistConfig = {
   key: "auth",
@@ -15,5 +15,5 @@ const authPersistConfig = {
 export const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authSlice),
   pokemons: pokemonsSlice,
-  // pokemonDetails: pokemonDetailsSlice,
+  productDetails: productDetailsSlice,
 });
