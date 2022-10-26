@@ -8,7 +8,7 @@ import {
   updateItem,
 } from "../pages/Cart/thunks";
 
-import { cartSelector } from "../pages/Cart/selectors";
+import { cartSelector } from "../selectors/index";
 
 export const useCart = () => {
   const dispatch = useDispatch();

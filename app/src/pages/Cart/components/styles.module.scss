@@ -1,5 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Cardo&family=Raleway:ital,wght@1,100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cardo&family=Inter&family=Raleway:ital,wght@1,100&display=swap");
+
 .wrapper {
-  height: 450px;
   padding: 20px;
   background-color: #f4f8ff;
+}
+.title {
+  font-family: "Cardo";
+  font-size: 24px;
+  color: rgba(27, 55, 100, 1);
+  text-align: center;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.titleCart {
+  font-family: "Cardo";
+  font-size: 20px;
+  color: rgba(27, 55, 100, 1);
+  text-align: center;
+  margin-top: 20px;
+}
+.cartContainer {
+  display: flex;
+  min-width: 67vh;
+  gap: 50px;
+  margin-bottom: 20px;
+
+  .cart {
+    width: 75%;
+    font-family: "Cardo";
+    font-size: 24px;
+    color: rgba(27, 55, 100, 1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 202, 66, 1);
+
+    .cardContainer {
+      padding: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid rgba(255, 202, 66, 1);
+
+      .card {
+        display: flex;
+        gap: 40px;
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .name {
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .buttonsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 50px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .totalPriceContainer {
+    display: flex;
+    width: 25%;
+    padding: 20px;
+    display: inline-block;
+    border: 1px solid rgba(255, 202, 66, 1);
+    border-radius: 20px;
+
+    .titleTotalPrice {
+      font-family: "Cardo";
+      font-size: 20px;
+      color: rgba(27, 55, 100, 1);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .subTotal {
+      font-family: "Cardo";
+      font-size: 20px;
+      color: rgba(27, 55, 100, 1);
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 202, 66, 1);
+    }
+
+    .total {
+      font-family: "Cardo";
+      font-size: 20px;
+      color: rgba(27, 55, 100, 1);
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .buttonOrder {
+      width: 50%;
+      color: rgba(27, 55, 100, 1);
+      font-family: "Inter";
+      font-size: 16px;
+      padding: 5px;
+      border-radius: 10px;
+      border: 2px solid rgba(27, 55, 100, 1);
+      &:hover {
+        color: #ffca42;
+        border: 1px solid rgba(255, 202, 66, 1);
+      }
+    }
+  }
+}
+.link {
+  font-family: "Cardo";
+  font-size: 24px;
+  color: rgba(27, 55, 100, 1);
+  &:hover {
+    color: #ffca42;
+  }
 }

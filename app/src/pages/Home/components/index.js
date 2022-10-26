@@ -1,5 +1,3 @@
-// import PokemonHome from "../../../static/img/PokemonHome.png";
-
 import styles from "./styles.module.scss";
 
 const Home = () => {

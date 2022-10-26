@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+
+  .button {
+    padding: 5px 10px;
+    color: rgba(27, 55, 100, 1);
+    border-radius: 5px;
+    border: 1px solid rgba(27, 55, 100, 1);
+    transition: all 0.5s ease-out;
+
+    &:hover {
+      color: rgb(210, 210, 210);
+      background: rgba(255, 202, 66, 1);
+    }
+  }
+  .quantity {
+    width: 40px;
+    padding: 5px;
+    margin: 0 5px;
+    text-align: center;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid rgba(27, 55, 100, 1);
+  }
+}
