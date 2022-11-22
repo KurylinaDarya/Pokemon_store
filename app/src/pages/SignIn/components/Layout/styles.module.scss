@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Cardo&family=Raleway:ital,wght@1,100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cardo&family=Inter&family=Raleway:ital,wght@1,100&display=swap");
+
+.wrapper {
+  width: 45%;
+  margin: 0 auto;
+}
+.title {
+  font-family: "Cardo";
+  font-size: 24px;
+  color: rgba(27, 55, 100, 1);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.dialogContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 2px solid rgba(27, 55, 100, 1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.input {
+  height: 35px;
+  margin-bottom: 10px;
+}
+.button {
+  width: 30%;
+  color: rgba(27, 55, 100, 1);
+  font-family: "Inter";
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid rgba(27, 55, 100, 1);
+  &:hover {
+    color: #ffca42;
+    border: 1px solid rgba(255, 202, 66, 1);
+  }
+}
+.link {
+  font-family: "Cardo";
+  font-size: 20px;
+  color: rgba(27, 55, 100, 1);
+  &:hover {
+    color: #ffca42;
+  }
+}

@@ -1,0 +1,81 @@
+.wrapper {
+  margin: 0 auto 15px;
+  display: flex;
+  border: 2px solid rgba(27, 55, 100, 1);
+  border-radius: 10px;
+  padding: 15px 5px;
+}
+.imageContainer {
+  width: 40%;
+  text-align: center;
+  .image {
+    width: 100%;
+  }
+}
+.container {
+  .title {
+    font-family: "Cardo";
+    font-size: 28px;
+    color: rgba(27, 55, 100, 1);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    font-family: "Cardo";
+    font-size: 22px;
+    color: rgba(27, 55, 100, 1);
+    margin-bottom: 10px;
+  }
+  .statsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: "Inter";
+    font-size: 16px;
+    color: rgba(27, 55, 100, 1);
+    margin-bottom: 20px;
+    .stats {
+      width: 250px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .abilities {
+    font-family: "Inter";
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(27, 55, 100, 1);
+    margin-bottom: 10px;
+  }
+}
+.price {
+  font-family: "Cardo";
+  font-size: 22px;
+  color: #ffca42;
+  margin-bottom: 10px;
+}
+.button {
+  width: 30%;
+  color: rgba(27, 55, 100, 1);
+  font-family: "Inter";
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid rgba(27, 55, 100, 1);
+  &:hover {
+    color: #ffca42;
+    border: 1px solid rgba(255, 202, 66, 1);
+  }
+}
+.cart {
+  cursor: pointer;
+  margin-top: 10px;
+}
+.link {
+  font-family: "Cardo";
+  font-size: 24px;
+  color: rgba(27, 55, 100, 1);
+  &:hover {
+    color: #ffca42;
+  }
+}

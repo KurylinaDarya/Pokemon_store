@@ -1,0 +1,32 @@
+.wrapper {
+  width: 100%;
+}
+.title {
+  font-family: "Cardo";
+  font-size: 30px;
+  line-height: 38px;
+  color: rgba(27, 55, 100, 1);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.pokemosContent {
+  min-height: 67vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.pokemosItem {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.pagination {
+  margin: 20px auto;
+}
+.pokemosContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

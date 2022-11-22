@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Cardo&family=Raleway:ital,wght@1,100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cardo&family=Inter&family=Raleway:ital,wght@1,100&display=swap");
+
+.wrapper {
+  height: 450px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  background: url("../../../static/img/pokemonSignUp.png") left bottom/350px
+    no-repeat;
+  background-color: rgba(245, 248, 252, 1);
+}
+.title {
+  font-family: "Cardo";
+  font-size: 36px;
+  color: rgba(27, 55, 100, 1);
+}
+.form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #ffca42;
+  border-right: 2px solid #ffca42;
+  .input {
+    width: 80%;
+    font-family: "Inter";
+    color: rgba(27, 55, 100, 1);
+  }
+}
+
+.button {
+  width: 50%;
+  color: #ffffff;
+  font-family: "Inter";
+  font-size: 18px;
+  padding: 10px 15px;
+  margin-top: 30px;
+  border-radius: 10px;
+  background-color: rgba(27, 55, 100, 1);
+  &:active {
+    color: #ffca42;
+  }
+  &:hover {
+    color: #ffca42;
+  }
+}
